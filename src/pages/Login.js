@@ -5,8 +5,8 @@ import { createStackNavigator } from 'react-navigation';
 export class Login extends React.Component {
   render() {
     return (
-      <View style={styles.background}>
-        <Text>LaunchED</Text>
+      <View>
+        <Image style={styles.logo} source={require('../images/LaunchED-Rocket.png')} />
       </View>
     );
   }
@@ -18,11 +18,8 @@ const styles = StyleSheet.create({
     color: 'red',
     textAlign: 'center',
   },
-
-  background: {
-    flex: 1,
-    backgroundColor:'#263238',
-    justifyContent: 'center',
-    alignItems: 'center',
+  logo: {
+    height:200,
+    width:200,
   },
 });
