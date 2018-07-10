@@ -1,21 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import { createStackNavigator } from 'react-navigation';
+
+import {Login}  from "./src/pages/Login";
 
 export default class App extends React.Component {
   render() {
-    return (
-      <View>
-        <Text style={styles.container}>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+    return(
+    <View>
+      <Login />
+    </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    fontSize: 12,
-    color: 'red'
-  },
-});
