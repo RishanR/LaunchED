@@ -42,7 +42,7 @@ const styleCredentials = StyleSheet.create({
   },
   LoginButton:{
     marginVertical:10,
-    backgroundColor:'#EF6C00',
+    backgroundColor:'#F57C00',
     borderRadius:15,
     width:325,
     height:40,
