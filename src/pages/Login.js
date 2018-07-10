@@ -1,25 +1,39 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar, Image } from 'react-native';
+import { StyleSheet, Text, View, StatusBar, Image, TextInput, Button, TouchableOpacity } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
+
+import {Logo} from "../components/Logo";
+import {AccountCredentials} from "../components/AccountCredentials";
 
 export class Login extends React.Component {
   render() {
     return (
-      <View>
-        <Image style={styles.logo} source={require('../images/LaunchED-Rocket.png')} />
+      <View style={styles.container}>
+      <Logo />
+      <AccountCredentials />
+      <TouchableOpacity style={styles.forgotPassword}>
+        <Text style={styles.text}>Forgot your password?</Text>
+      </TouchableOpacity>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  text: {
-    fontSize: 24,
-    color: 'red',
-    textAlign: 'center',
+  container: {
+    flexGrow:1,
+    backgroundColor:'#263238',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  logo: {
-    height:200,
-    width:200,
+
+  forgotPassword: {
+    flexGrow:1,
+    justifyContent:'center',
+    alignItems:'center',
+  },
+  text: {
+    fontSize:15,
+    color:'#3e84f2',
   },
 });
