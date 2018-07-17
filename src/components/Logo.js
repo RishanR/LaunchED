@@ -1,14 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image} from 'react-native';
 import { createStackNavigator } from 'react-navigation';
+import * as Animatable from 'react-native-animatable';
 
 export class Logo extends React.Component {
   render() {
     return (
-          <View style={logoStyle.container}>
-            <Image style={logoStyle.logo} source={require('../images/LaunchED-Rocket.png')} />
-            <Image style={logoStyle.logoText} source={require('../images/LaunchED-Text.png')} />
-          </View>
+          <Animatable.View animation="fadeInLeft" iterationCount={1} style={logoStyle.container}>
+            <Animatable.Image animation="pulse" duration={3000} iterationCount="infinite" direction="alternate" style={logoStyle.logo} source={require('../images/LaunchED-Rocket.png')} />
+            <Animatable.Image style={logoStyle.logoText} source={require('../images/LaunchED-Text.png')} />
+          </Animatable.View>
           );
   }
 }
@@ -17,7 +18,7 @@ const logoStyle = StyleSheet.create({
   container:{
     flexGrow:1,
     alignItems:'center',
-    justifyContent:'flex-end',
+    justifyContent:'center'
   },
   logo: {
     height:100,

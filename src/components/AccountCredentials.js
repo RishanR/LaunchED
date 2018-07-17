@@ -1,29 +1,44 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar, Image, TextInput, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, StatusBar, Image, TextInput, Button, TouchableOpacity, Alert } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
+import * as Animatable from 'react-native-animatable';
 
 export class AccountCredentials extends React.Component {
   render() {
     return (
-      <View style={styleCredentials.container}>
+      <View style={styleCredentials.containerMain}>
+
+      <Animatable.View ref={(ref) => {this.credentials = ref;}} animation="fadeInRight" iterationCount={1} style={styleCredentials.container1}>
         <TextInput style={styleCredentials.InputBox} underlineColorAndroid='rgba(0,0,0,0)' placeholder="Email" />
         <TextInput style={styleCredentials.InputBox} underlineColorAndroid='rgba(0,0,0,0)' placeholder="Password" secureTextEntry={true}/>
-        <TouchableOpacity style={styleCredentials.LoginButton}>
-          <Text style={styleCredentials.LoginText}>Log In</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styleCredentials.SignUpButton}>
-          <Text style={styleCredentials.LoginText}>Sign Up</Text>
-        </TouchableOpacity>
+      </Animatable.View>
+
+
+      <Animatable.View ref={(ref) => {this.signup = ref;}} style={styleCredentials.container2}>
+        <TextInput style={styleCredentials.InputBox} underlineColorAndroid='rgba(0,0,0,0)' placeholder="First Name" />
+        <TextInput style={styleCredentials.InputBox} underlineColorAndroid='rgba(0,0,0,0)' placeholder="Last Name" />
+        <TextInput style={styleCredentials.InputBox} underlineColorAndroid='rgba(0,0,0,0)' placeholder="Email" />
+        <TextInput style={styleCredentials.InputBox} underlineColorAndroid='rgba(0,0,0,0)' placeholder="Password" secureTextEntry={true}/>
+      </Animatable.View>
       </View>
     );
   }
 }
 
 const styleCredentials = StyleSheet.create({
-  container: {
+  containerMain: {
     flexGrow:1,
     justifyContent:'center',
-    alignItems:'center',
+    alignItems:'center'
+  },
+  container1: {
+    zIndex: 5,
+    position:'absolute'
+  },
+  container2: {
+    zIndex: 4,
+    position:'absolute',
+    opacity: 0
   },
   InputBox: {
     height:50,
@@ -34,29 +49,5 @@ const styleCredentials = StyleSheet.create({
     backgroundColor:'rgba(255,255,255,0.05)',
     borderRadius:25,
     color:'#ffffff'
-  },
-  LoginText:{
-    fontSize:20,
-    color:'rgba(255,255,255,1)',
-    fontWeight:'bold',
-  },
-  LoginButton:{
-    marginVertical:10,
-    backgroundColor:'#F57C00',
-    borderRadius:15,
-    width:325,
-    height:40,
-    alignItems:'center',
-    justifyContent:'center',
-  },
-  SignUpButton:{
-    marginVertical:10,
-    borderColor:'#ffffff',
-    borderWidth:1,
-    borderRadius:15,
-    width:325,
-    height:40,
-    alignItems:'center',
-    justifyContent:'center',
   },
 });
