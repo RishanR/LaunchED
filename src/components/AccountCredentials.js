@@ -4,6 +4,7 @@ import { createStackNavigator } from 'react-navigation';
 import * as Animatable from 'react-native-animatable';
 
 export class AccountCredentials extends React.Component {
+
   render() {
     return (
       <View style={styleCredentials.containerMain}>
@@ -14,7 +15,7 @@ export class AccountCredentials extends React.Component {
       </Animatable.View>
 
 
-      <Animatable.View ref={(ref) => {this.signup = ref;}} style={styleCredentials.container2}>
+      <Animatable.View disabled = {true} ref={(ref) => {this.signup = ref;}} style={styleCredentials.container2}>
         <TextInput style={styleCredentials.InputBox} underlineColorAndroid='rgba(0,0,0,0)' placeholder="First Name" />
         <TextInput style={styleCredentials.InputBox} underlineColorAndroid='rgba(0,0,0,0)' placeholder="Last Name" />
         <TextInput style={styleCredentials.InputBox} underlineColorAndroid='rgba(0,0,0,0)' placeholder="Email" />
