@@ -4,7 +4,7 @@ import { createStackNavigator } from 'react-navigation';
 import * as Animatable from 'react-native-animatable';
 
 import {Logo} from "../components/Logo";
-import {AccountCredentials} from "../components/AccountCredentials";
+import {LoginCredentials} from "../components/LoginCredentials";
 
 const AnimatableTouchableOpacity = Animatable.createAnimatableComponent(TouchableOpacity);
 
@@ -14,13 +14,14 @@ export class Login extends React.Component {
     header:null
   }
 
+
   render() {
     return (
       <View style={styles.container}>
 
-      <Logo ref={(ref) => {this.childLogo = ref;}}/>
+      <Logo ref={(ref) => {this.childLogo = ref;}} animation="fadeInLeft" iterationCount={1} />
 
-      <AccountCredentials ref={(ref) => {this.childCred = ref;}}/>
+      <LoginCredentials ref={(ref) => {this.childCred = ref;}}/>
 
       <AnimatableTouchableOpacity ref={(ref) => {this.loginButton = ref;}} style={styles.LoginButton}>
         <Text style={styles.LoginText}>Log In</Text>
@@ -29,13 +30,7 @@ export class Login extends React.Component {
       <AnimatableTouchableOpacity
       ref={(ref) => {this.signupButton = ref;}}
       onPress={() => {
-        this.forgot.transitionTo({transform: [{ translateY: 30 }]});
-        this.childLogo.rocket.transitionTo({transform: [{ translateY: -30 }]});
-        this.childLogo.logoText.transitionTo({transform: [{ translateY: -30 }]});
-        this.childCred.signup.fadeInRight(500);
-        this.childCred.credentials.transitionTo({transform: [{ translateX: -500 }]});
-        this.loginButton.transitionTo({transform: [{ translateX: -500 }]});
-        this.signupButton.transitionTo({transform: [{ translateY: 30 }]});
+        this.props.navigation.navigate('SignupScreen')
       }}
 
         style={styles.SignUpButton}>
@@ -61,7 +56,7 @@ const styles = StyleSheet.create({
   },
 
   forgotPassword: {
-    bottom: 65
+    bottom: 45
   },
 
   forgotPasswordContainer: {
@@ -82,7 +77,7 @@ const styles = StyleSheet.create({
   LoginButton:{
     top: 10,
     marginVertical:10,
-    backgroundColor:'#F57C00',
+    backgroundColor:'#ff9800',
     borderRadius:15,
     width:325,
     height:40,

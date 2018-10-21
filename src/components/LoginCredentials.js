@@ -3,25 +3,14 @@ import { StyleSheet, Text, View, StatusBar, Image, TextInput, Button, TouchableO
 import { createStackNavigator } from 'react-navigation';
 import * as Animatable from 'react-native-animatable';
 
-export class AccountCredentials extends React.Component {
+export class LoginCredentials extends React.Component {
 
   render() {
     return (
-      <View style={styleCredentials.containerMain}>
-
-      <Animatable.View ref={(ref) => {this.credentials = ref;}} animation="fadeInRight" iterationCount={1} style={styleCredentials.container1}>
+      <Animatable.View ref={(ref) => {this.credentials = ref;}} animation="fadeInRight" iterationCount={1} style={styleCredentials.containerMain}>
         <TextInput style={styleCredentials.InputBox} underlineColorAndroid='rgba(0,0,0,0)' placeholder="Email" />
         <TextInput style={styleCredentials.InputBox} underlineColorAndroid='rgba(0,0,0,0)' placeholder="Password" secureTextEntry={true}/>
       </Animatable.View>
-
-
-      <Animatable.View disabled = {true} ref={(ref) => {this.signup = ref;}} style={styleCredentials.container2}>
-        <TextInput style={styleCredentials.InputBox} underlineColorAndroid='rgba(0,0,0,0)' placeholder="First Name" />
-        <TextInput style={styleCredentials.InputBox} underlineColorAndroid='rgba(0,0,0,0)' placeholder="Last Name" />
-        <TextInput style={styleCredentials.InputBox} underlineColorAndroid='rgba(0,0,0,0)' placeholder="Email" />
-        <TextInput style={styleCredentials.InputBox} underlineColorAndroid='rgba(0,0,0,0)' placeholder="Password" secureTextEntry={true}/>
-      </Animatable.View>
-      </View>
     );
   }
 }

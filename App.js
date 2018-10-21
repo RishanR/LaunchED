@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
-
 import { Login }  from "./src/pages/Login";
 import { Signup } from "./src/pages/Signup";
-import { AccountCredentials } from "./src/components/AccountCredentials";
+import { LoginCredentials } from "./src/components/LoginCredentials";
+import { SignupCredentials } from "./src/components/SignupCredentials";
 
 export default class App extends React.Component {
   render() {
