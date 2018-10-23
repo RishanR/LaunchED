@@ -1,7 +1,7 @@
 import React from "react";
 import { Avatar, Header, Text, Divider, Button, Icon } from "react-native-elements";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
-import Main from "./pages/Main.js";
+import Main from "./src/pages/Main.js";
 
 
 export default class App extends React.Component {
