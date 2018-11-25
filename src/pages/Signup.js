@@ -36,7 +36,11 @@ export class Signup extends React.Component {
     </AnimatableTouchableOpacity>
 
       <View style={styles.forgotPasswordContainer}>
-      <AnimatableTouchableOpacity ref={(ref) => {this.forgot = ref;}} style={styles.forgotPassword}>
+      <AnimatableTouchableOpacity ref={(ref) => {this.forgot = ref;}}
+      onPress={() => {
+        this.props.navigation.navigate('ForgotPasswordScreen')
+      }}
+      style={styles.forgotPassword}>
         <Text style={styles.text}>Forgot your password?</Text>
       </AnimatableTouchableOpacity>
       </View>

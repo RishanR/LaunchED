@@ -4,48 +4,35 @@ import { createStackNavigator } from 'react-navigation';
 import * as Animatable from 'react-native-animatable';
 
 import {Logo} from "../components/Logo";
-import {LoginCredentials} from "../components/LoginCredentials";
+import {ForgotPasswordCredentials} from "../components/ForgotPasswordCredentials";
 
 const AnimatableTouchableOpacity = Animatable.createAnimatableComponent(TouchableOpacity);
 
-export class Login extends React.Component {
+export class ForgotPassword extends React.Component {
 
   static navigationOptions = {
     header:null
   }
 
-
   render() {
     return (
       <View style={styles.container}>
 
-      <Logo ref={(ref) => {this.childLogo = ref;}} animation="fadeInLeft" iterationCount={1} />
+      <Logo ref={(ref) => {this.childLogo = ref;}} />
+      <ForgotPasswordCredentials ref={(ref) => {this.childForgotCred = ref;}}/>
 
-      <LoginCredentials ref={(ref) => {this.childCred = ref;}}/>
-
-      <AnimatableTouchableOpacity ref={(ref) => {this.loginButton = ref;}} style={styles.LoginButton}>
-        <Text style={styles.LoginText}>Log In</Text>
+      <AnimatableTouchableOpacity ref={(ref) => {this.forgotScreenButton = ref;}} style={styles.ForgotButton}>
+        <Text style={styles.ForgotText}>Submit</Text>
       </AnimatableTouchableOpacity>
 
       <AnimatableTouchableOpacity
-      ref={(ref) => {this.signupButton = ref;}}
+      ref={(ref) => {this.backButton = ref;}}
       onPress={() => {
-        this.props.navigation.navigate('SignupScreen')
+        this.props.navigation.goBack()
       }}
-
-        style={styles.SignUpButton}>
-        <Text style={styles.LoginText}>Sign Up</Text>
-      </AnimatableTouchableOpacity>
-
-      <View style={styles.forgotPasswordContainer}>
-      <AnimatableTouchableOpacity ref={(ref) => {this.forgot = ref;}}
-      onPress={() => {
-        this.props.navigation.navigate('ForgotPasswordScreen')
-      }}
-      style={styles.forgotPassword}>
-        <Text style={styles.text}>Forgot your password?</Text>
-      </AnimatableTouchableOpacity>
-      </View>
+      style={styles.BackButton}>
+      <Text style={styles.ForgotText}>Back</Text>
+    </AnimatableTouchableOpacity>
       </View>
     );
   }
@@ -58,28 +45,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-
-  forgotPassword: {
-    bottom: 45
+  formatCred: {
+    flex: 1,
+    justifyContent:'center',
+    alignItems:'center',
   },
-
-  forgotPasswordContainer: {
-    flexGrow:1,
-    justifyContent: 'flex-end',
-    alignItems:'center'
-  },
-
-  text: {
-    fontSize:15,
-    color:'#3e84f2',
-  },
-  LoginText:{
+  ForgotText:{
     fontSize:20,
     color:'rgba(255,255,255,1)',
     fontWeight:'bold',
   },
-  LoginButton:{
-    top: 10,
+  ForgotButton:{
+    top: -50,
     marginVertical:10,
     backgroundColor:'#ff9800',
     borderRadius:15,
@@ -88,7 +65,8 @@ const styles = StyleSheet.create({
     alignItems:'center',
     justifyContent:'center',
   },
-  SignUpButton:{
+  BackButton:{
+    top: -60,
     marginVertical:10,
     borderColor:'#ffffff',
     borderWidth:1,
