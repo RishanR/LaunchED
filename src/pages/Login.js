@@ -22,6 +22,12 @@ export class Login extends React.Component {
 
   static navigationOptions = {
     header:null
+  };
+
+  authenticateLogin() {
+      //TODO: This will be where we authenticate the login process and then navigate the user to the announcements page.
+
+      this.props.navigation.navigate('AnnouncementsScreen');
   }
 
 
@@ -33,13 +39,14 @@ export class Login extends React.Component {
 
         <LoginCredentials ref={(ref) => {this.childCred = ref;}}/>
 
-        <AnimatableTouchableOpacity ref={(ref) => {this.loginButton = ref;}} style={styles.LoginButton}>
+        <AnimatableTouchableOpacity ref={(ref) => {this.loginButton = ref;}} style={styles.LoginButton}
+                                    onPress={() => {this.authenticateLogin()}}>
           <Text style={styles.LoginText}>Log In</Text>
         </AnimatableTouchableOpacity>
 
         <AnimatableTouchableOpacity
-        ref={(ref) => {this.signupButton = ref;}}
-        onPress={() => {
+          ref={(ref) => {this.signupButton = ref;}}
+          onPress={() => {
           this.props.navigation.navigate('SignupScreen')
         }}
 
