@@ -1,5 +1,15 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar, Image, TextInput, Button, TouchableOpacity } from 'react-native';
+import {
+    StyleSheet,
+    Text,
+    View,
+    StatusBar,
+    Image,
+    TextInput,
+    Button,
+    TouchableOpacity,
+    KeyboardAvoidingView
+} from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import * as Animatable from 'react-native-animatable';
 
@@ -17,36 +27,36 @@ export class Login extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView behavior={"padding"} style={styles.container}>
 
-      <Logo ref={(ref) => {this.childLogo = ref;}} animation="fadeInLeft" iterationCount={1} />
+        <Logo ref={(ref) => {this.childLogo = ref;}} animation="fadeInLeft" iterationCount={1} />
 
-      <LoginCredentials ref={(ref) => {this.childCred = ref;}}/>
+        <LoginCredentials ref={(ref) => {this.childCred = ref;}}/>
 
-      <AnimatableTouchableOpacity ref={(ref) => {this.loginButton = ref;}} style={styles.LoginButton}>
-        <Text style={styles.LoginText}>Log In</Text>
-      </AnimatableTouchableOpacity>
+        <AnimatableTouchableOpacity ref={(ref) => {this.loginButton = ref;}} style={styles.LoginButton}>
+          <Text style={styles.LoginText}>Log In</Text>
+        </AnimatableTouchableOpacity>
 
-      <AnimatableTouchableOpacity
-      ref={(ref) => {this.signupButton = ref;}}
-      onPress={() => {
-        this.props.navigation.navigate('SignupScreen')
-      }}
+        <AnimatableTouchableOpacity
+        ref={(ref) => {this.signupButton = ref;}}
+        onPress={() => {
+          this.props.navigation.navigate('SignupScreen')
+        }}
 
-        style={styles.SignUpButton}>
-        <Text style={styles.LoginText}>Sign Up</Text>
-      </AnimatableTouchableOpacity>
+          style={styles.SignUpButton}>
+          <Text style={styles.LoginText}>Sign Up</Text>
+        </AnimatableTouchableOpacity>
 
-      <View style={styles.forgotPasswordContainer}>
-      <AnimatableTouchableOpacity ref={(ref) => {this.forgot = ref;}}
-      onPress={() => {
-        this.props.navigation.navigate('ForgotPasswordScreen')
-      }}
-      style={styles.forgotPassword}>
-        <Text style={styles.text}>Forgot your password?</Text>
-      </AnimatableTouchableOpacity>
-      </View>
-      </View>
+        <KeyboardAvoidingView behavior={"padding"} style={styles.forgotPasswordContainer}>
+        <AnimatableTouchableOpacity ref={(ref) => {this.forgot = ref;}}
+        onPress={() => {
+          this.props.navigation.navigate('ForgotPasswordScreen')
+        }}
+        style={styles.forgotPassword}>
+          <Text style={styles.text}>Forgot your password?</Text>
+        </AnimatableTouchableOpacity>
+        </KeyboardAvoidingView>
+      </KeyboardAvoidingView>
     );
   }
 }
