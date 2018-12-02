@@ -14,7 +14,7 @@ import { createStackNavigator } from 'react-navigation';
 import * as Animatable from 'react-native-animatable';
 
 import {Logo} from "../components/Logo";
-import {SignupCredentials} from "../components/SignupCredentials";
+import {SignupCredentials} from "../components/login/SignupCredentials";
 
 const AnimatableTouchableOpacity = Animatable.createAnimatableComponent(TouchableOpacity);
 

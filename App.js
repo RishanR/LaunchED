@@ -1,10 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
-import { Login }  from "./src/pages/Login";
-import { Signup } from "./src/pages/Signup";
 import { ForgotPassword } from "./src/pages/ForgotPassword";
 import Announcements from "./src/pages/Announcements";
+import AnnouncementsDetails from "./src/components/announcements/AnnouncementsDetails";
+import {Login} from "./src/pages/Login";
+import {Signup} from "./src/pages/Signup";
 
 export default class App extends React.Component {
   render() {
@@ -18,10 +19,11 @@ export default class App extends React.Component {
 
 const LaunchedStackNavigator =  createStackNavigator({
   LoginScreen: { screen: Login },
-  AnnouncementsScreen: {screen: Announcements},
+  AnnouncementsScreen: {screen: Announcements },
+  AnnouncementsDetailsScreen: {screen: AnnouncementsDetails },
   SignupScreen: { screen: Signup },
   ForgotPasswordScreen: {screen: ForgotPassword },
-})
+});
 
 const main = StyleSheet.create({
 background: {
