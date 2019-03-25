@@ -1,17 +1,8 @@
 import React from 'react';
-import {
-    StyleSheet,
-    Text,
-    View,
-    StatusBar,
-    Image,
-    TextInput,
-    Button,
-    TouchableOpacity,
-    KeyboardAvoidingView
-} from 'react-native';
+import {StyleSheet,Text,View,StatusBar,Image,TextInput,Button, TouchableOpacity,KeyboardAvoidingView,Alert} from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import * as Animatable from 'react-native-animatable';
+import * as firebase from 'firebase';
 
 import {Logo} from "../components/Logo";
 import {LoginCredentials} from "../components/LoginCredentials";
@@ -23,17 +14,37 @@ export class Login extends React.Component {
   static navigationOptions = {
     header:null
   }
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: "",
+    }
+  }
 
-
+onLoginPress = () => {
+    firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+      .then(() => {
+        Alert.alert("Congratulations! You have logged in!");
+      }, (error) => {
+        Alert.alert(error.message);
+      });
+}
   render() {
     return (
       <KeyboardAvoidingView behavior={"padding"} style={styles.container}>
 
         <Logo ref={(ref) => {this.childLogo = ref;}} animation="fadeInLeft" iterationCount={1} />
 
-        <LoginCredentials ref={(ref) => {this.childCred = ref;}}/>
+        <Animatable.View ref={(ref) => {this.credentials = ref;}} animation="fadeInRight" iterationCount={1} style={styles.containerMain}>
+          <TextInput style={styles.InputBox} underlineColorAndroid='rgba(0,0,0,0)' placeholder="Email" onChangeText={(text)=>{this.setState({email: text})}} value = {this.state.email}/>
+          <TextInput style={styles.InputBox} underlineColorAndroid='rgba(0,0,0,0)' placeholder="Password" secureTextEntry={true} onChangeText={(text)=>{this.setState({password: text})}} value = {this.state.password}/>
+        </Animatable.View>
 
-        <AnimatableTouchableOpacity ref={(ref) => {this.loginButton = ref;}} style={styles.LoginButton}>
+        <AnimatableTouchableOpacity
+        ref={(ref) => {this.loginButton = ref;}}
+        onPress={this.onLoginPress}
+        style={styles.LoginButton}>
           <Text style={styles.LoginText}>Log In</Text>
         </AnimatableTouchableOpacity>
 

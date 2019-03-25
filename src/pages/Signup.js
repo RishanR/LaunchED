@@ -8,10 +8,12 @@ import {
     TextInput,
     Button,
     TouchableOpacity,
-    KeyboardAvoidingView
+    KeyboardAvoidingView,
+    Alert
 } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import * as Animatable from 'react-native-animatable';
+import * as firebase from 'firebase';
 
 import {Logo} from "../components/Logo";
 import {SignupCredentials} from "../components/SignupCredentials";
@@ -20,19 +22,40 @@ const AnimatableTouchableOpacity = Animatable.createAnimatableComponent(Touchabl
 
 export class Signup extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      password: "",
+    }
+  }
+
   static navigationOptions = {
     header:null
   }
 
+  onSignupPress = () => {
+    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then(()=>{
+        Alert.alert("Thank you for registering into LaunchED!");
+      }, (error) => {
+        Alert.alert(error.message);
+      });
+  }
   render() {
     return (
       <KeyboardAvoidingView behavior={"padding"} style={styles.container}>
 
         <Logo ref={(ref) => {this.childLogo = ref;}} />
 
-        <SignupCredentials ref={(ref) => {this.childSignCred = ref;}}/>
+        <Animatable.View ref={(ref) => {this.signup = ref;}} animation="fadeInRight" iterationCount={1} style={styles.containerMain}>
+          <TextInput style={styles.InputBox} underlineColorAndroid='rgba(0,0,0,0)' placeholder="First Name" />
+          <TextInput style={styles.InputBox} underlineColorAndroid='rgba(0,0,0,0)' placeholder="Last Name" />
+          <TextInput style={styles.InputBox} underlineColorAndroid='rgba(0,0,0,0)' placeholder="Email" onChangeText={(text)=>{this.setState({email: text})}} value = {this.state.email}/>
+          <TextInput style={styles.InputBox} underlineColorAndroid='rgba(0,0,0,0)' placeholder="Password" secureTextEntry={true} onChangeText={(text)=>{this.setState({password: text})}} value = {this.state.password}/>
+        </Animatable.View>
 
-        <AnimatableTouchableOpacity ref={(ref) => {this.signupScreenButton = ref;}} style={styles.SignupButton}>
+        <AnimatableTouchableOpacity ref={(ref) => {this.signupScreenButton = ref;}} onPress={this.onSignupPress} style={styles.SignupButton}>
           <Text style={styles.SignupText}>Sign Up</Text>
         </AnimatableTouchableOpacity>
 

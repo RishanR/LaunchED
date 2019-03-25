@@ -1,15 +1,22 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar, Image, TextInput, Button, TouchableOpacity, Alert } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, View, StatusBar, Image, TextInput, Button, TouchableOpacity, Alert } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import * as Animatable from 'react-native-animatable';
 
 export class LoginCredentials extends React.Component {
 
+  constructor(props) {
+      super(props)
+      this.state = {
+        emailAdd: "",
+        passwordAdd: "",
+      }
+    }
   render() {
     return (
       <Animatable.View ref={(ref) => {this.credentials = ref;}} animation="fadeInRight" iterationCount={1} style={styleCredentials.containerMain}>
-        <TextInput style={styleCredentials.InputBox} underlineColorAndroid='rgba(0,0,0,0)' placeholder="Email" />
-        <TextInput style={styleCredentials.InputBox} underlineColorAndroid='rgba(0,0,0,0)' placeholder="Password" secureTextEntry={true}/>
+        <TextInput style={styleCredentials.InputBox} underlineColorAndroid='rgba(0,0,0,0)' placeholder="Email" onChangeText={(text)=>{this.setState({emailAdd: text})}} value = {this.state.emailAdd}/>
+        <TextInput style={styleCredentials.InputBox} underlineColorAndroid='rgba(0,0,0,0)' placeholder="Password" secureTextEntry={true} onChangeText={(text)=>{this.setState({passwordAdd: text})}} value = {this.state.passwordAdd}/>
       </Animatable.View>
     );
   }
