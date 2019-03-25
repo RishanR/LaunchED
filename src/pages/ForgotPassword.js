@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar, Image, TextInput, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, StatusBar, Image, TextInput, Button, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import * as Animatable from 'react-native-animatable';
 
@@ -16,10 +16,13 @@ export class ForgotPassword extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView behavior={"position"} style={styles.container}>
 
       <Logo ref={(ref) => {this.childLogo = ref;}} />
-      <ForgotPasswordCredentials ref={(ref) => {this.childForgotCred = ref;}}/>
+
+      <Animatable.View ref={(ref) => {this.credentials = ref;}} animation="fadeInRight" iterationCount={1} style={styles.containerMain}>
+        <TextInput style={styles.InputBox} underlineColorAndroid='rgba(0,0,0,0)' placeholder="Email" />
+      </Animatable.View>
 
       <AnimatableTouchableOpacity ref={(ref) => {this.forgotScreenButton = ref;}} style={styles.ForgotButton}>
         <Text style={styles.ForgotText}>Submit</Text>
@@ -33,7 +36,7 @@ export class ForgotPassword extends React.Component {
       style={styles.BackButton}>
       <Text style={styles.ForgotText}>Back</Text>
     </AnimatableTouchableOpacity>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }

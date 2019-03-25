@@ -58,7 +58,7 @@ onLoginPress = () => {
           <Text style={styles.LoginText}>Sign Up</Text>
         </AnimatableTouchableOpacity>
 
-        <KeyboardAvoidingView behavior={"padding"} style={styles.forgotPasswordContainer}>
+      <KeyboardAvoidingView behavior={"padding"} style={styles.forgotPasswordContainer}>
         <AnimatableTouchableOpacity ref={(ref) => {this.forgot = ref;}}
         onPress={() => {
           this.props.navigation.navigate('ForgotPasswordScreen')
