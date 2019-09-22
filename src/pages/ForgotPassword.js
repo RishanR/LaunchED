@@ -104,4 +104,5 @@ const styles = StyleSheet.create({
     borderRadius:25,
     color:'#ffffff'
   },
+  
 });
